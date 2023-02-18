@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './styles/App.css'
-import './components/Title'
+import Title from './components/Title.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
