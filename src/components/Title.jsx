@@ -6,6 +6,7 @@ function Title() {
 
   return (
     <div className="Title">
+      <p>Test titolo</p>
     </div>
   )
 }
