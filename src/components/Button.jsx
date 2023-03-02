@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import '../styles/Button.css'
 
-function Button() {
+function Button(props) {
   const [count, setCount] = useState(0)
 
   return (
     <div className="Button">
-        <button>Test Bottone</button>
+        <button id={props.id}>{props.children}</button>
     </div>
   )
 }
