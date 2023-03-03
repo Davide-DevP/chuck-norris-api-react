@@ -2,11 +2,10 @@ import { useState } from 'react'
 import '../styles/Button.css'
 
 function Button(props) {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="Button">
-        <button id={props.id}>{props.children}</button>
+        <button id={props.id} onClick={props.onClick}>{props.children}</button>
     </div>
   )
 }

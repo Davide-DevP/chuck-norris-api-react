@@ -8,15 +8,15 @@ function Dropdown(props) {
     return resp.json();
   }).then(data=>{
     setCategories(data);
-}).catch((e)=>{
+  }).catch((e)=>{
     console.log(e)
-})
+  })
 
-    console.log(categories);
   return (
     <div className="Dropdown">
         <select id={props.id}>
-        {categories.map((el,index)=> {return <option value={el} key={index}>{el}</option>})}
+        <option value="random">Random</option>
+        {categories.map((el,index)=> {return <option value={"random?category="+el} key={index}>{el}</option>})}
         </select>
     </div>
   )
