@@ -3,9 +3,20 @@ import '../styles/Button.css'
 
 function Button(props) {
 
+  function defaultCallback(){
+  }
+
+  function onBtnClick(){
+    if(props.callback && props.variant!=="disabled"){
+      props.callback();
+    }else{
+      defaultCallback();
+    }
+  }
+
   return (
-    <div className="Button">
-        <button id={props.id} onClick={props.onClick}>{props.children}</button>
+    <div className={"Button"}>
+        <button className={"Button" + (props.variant!==undefined ? " disabled" : "")} id={props.id} onClick={onBtnClick}>{props.children}</button>
     </div>
   )
 }

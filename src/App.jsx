@@ -6,7 +6,17 @@ import Dropdown from './components/Dropdown.jsx'
 import JokeText from './components/JokeText.jsx'
 
 function App() {
-  const [joke, setJoke] = useState("")
+  const [joke, setJoke] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [clicked, setClicked] = useState(false);
+  let url = "https://api.chucknorris.io/jokes/categories";
+  fetch(url).then((resp)=>{
+    return resp.json();
+  }).then(data=>{
+    setCategories(data);
+  }).catch((e)=>{
+    console.log(e)
+  })
 
   function generateJoke(){
     let selectedCategory = document.getElementById("dropdown").value
@@ -15,6 +25,7 @@ function App() {
       return resp.json();
     }).then(data=>{
       setJoke(data.value);
+      setClicked(true);
     }).catch((e)=>{
       console.log(e)
     })
@@ -28,10 +39,14 @@ function App() {
   return (
     <div className="App">
       <Title>Chuck Norris Joke Generator</Title>
-      <Button id='generate' onClick={generateJoke}>Generate Joke</Button>
-      <Button id='clipboard' onClick={copyJoke}>Copy to clipboard</Button>
-      <Dropdown id='dropdown'></Dropdown>
-      <JokeText id='JokeText'>{joke}</JokeText>
+      <div className="header">
+        <Button id='generate' callback={generateJoke}>Generate Joke</Button>
+        <Dropdown id='dropdown' values={categories}></Dropdown>
+        <div>
+          <JokeText id='JokeText'>{joke}</JokeText>
+        </div>
+      </div>
+      <Button id='clipboard' callback={copyJoke} variant={clicked === true ? undefined : "disabled"}>Copy to clipboard</Button>
     </div>
   )
 }
