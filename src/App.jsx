@@ -13,6 +13,7 @@ function App() {
   fetch(url).then((resp)=>{
     return resp.json();
   }).then(data=>{
+    data.unshift("random");
     setCategories(data);
   }).catch((e)=>{
     console.log(e)
