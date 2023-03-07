@@ -6,7 +6,7 @@ function Dropdown(props) {
   return (
     <div className="Dropdown">
         <select id={props.id}>
-        {props.values.map((el,index)=> {return <option value={"random?category="+el} key={index}>{el}</option>})}
+        {props.values.map((el,index)=> {return <option value={el} key={index}>{el}</option>})}
         </select>
     </div>
   )
